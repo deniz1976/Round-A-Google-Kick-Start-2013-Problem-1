@@ -7,6 +7,7 @@
 
 /**
  * Problem
+ *
 Alex and Bob are brothers and they both enjoy reading very much. They have widely different tastes on books so they keep
  their own books separately. However, their father thinks it is good to promote exchanges if they can put their books
  together. Thus he has bought an one-row bookshelf for them today and put all his sons' books on it in random order.
@@ -55,7 +56,14 @@ Test set 2 - Hidden
 using namespace std;
 
 int main() {
-    int books[] = {1, 4, 7, 95, -2, 1, 0, 5543, 2, -96, 4, 223};
+    int arrLength;
+    std::cout << "Enter the length of books" << std::endl;
+    cin >> arrLength;
+    int books[arrLength];
+    for(int i = 0 ; i < arrLength ; i++){
+        std::cout << "Enter a integer" << std::endl;
+        cin >> books[i];
+    }
     int evensCounter = 0;
     int oddsCounter = 0;
     for (int book: books) {
@@ -87,7 +95,7 @@ int main() {
     iteratorOdd = odds.begin();
 
 
-    for (int i = 0; i < size(books); i++) {
+    for (int i = 0; i < arrLength; i++) {
         if (books[i] % 2 == 0) {
             books[i] = *iteratorEven;
             iteratorEven++;
@@ -96,7 +104,7 @@ int main() {
             iteratorOdd++;
         }
     }
-    for (int i = 0; i < size(books); i++) {
-        std::cout << books[i] << " ";
+    for (int book : books) {
+        std::cout << book << " ";
     }
 }
