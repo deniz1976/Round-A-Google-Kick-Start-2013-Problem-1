@@ -56,11 +56,20 @@ Test set 2 - Hidden
 using namespace std;
 
 int main() {
+    bool loop = true;
     int arrLength;
-    std::cout << "Enter the length of books" << std::endl;
-    cin >> arrLength;
+    while (loop) {
+        std::cout << "Enter the length of books" << std::endl;
+        cin >> arrLength;
+        if (arrLength < 0 || arrLength > 1000) {
+            arrLength = 0;
+        } else {
+            loop = false;
+        }
+    }
+
     int books[arrLength];
-    for(int i = 0 ; i < arrLength ; i++){
+    for (int i = 0; i < arrLength; i++) {
         std::cout << "Enter a integer" << std::endl;
         cin >> books[i];
     }
@@ -104,7 +113,7 @@ int main() {
             iteratorOdd++;
         }
     }
-    for (int book : books) {
+    for (int book: books) {
         std::cout << book << " ";
     }
 }
