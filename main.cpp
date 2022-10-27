@@ -74,14 +74,6 @@ int main() {
     for (int i = 0; i < arrLength; i++) {
         cin >> books[i];
     }
-    int evensCounter = 0;
-    int oddsCounter = 0;
-    for (int book: books) {
-        if (book % 2 == 0) {
-            evensCounter++;
-        } else
-            oddsCounter++;
-    }
 
     list<int> evens;
     for (int &book: books) {
