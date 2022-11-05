@@ -93,7 +93,6 @@ int main() {
     odds.sort();
     auto iteratorEven = evens.begin();
     auto iteratorOdd = odds.begin();
-
     for (int i = 0; i < arrLength; i++) {
         if (books[i] % 2 == 0) {
             books[i] = *iteratorEven;
