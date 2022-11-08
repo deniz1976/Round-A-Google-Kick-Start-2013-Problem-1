@@ -1,5 +1,6 @@
 #include <iostream>
 #include <list>
+#include <algorithm>
 
 /**
  * @name Deniz Mutlu
