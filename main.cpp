@@ -3,7 +3,7 @@
 #include <algorithm>
 
 /**
- * @name Deniz Mutlu
+ * @name Deniz Mutlu.
  */
 
 /**
