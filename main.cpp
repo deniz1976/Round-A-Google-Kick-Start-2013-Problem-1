@@ -1,11 +1,3 @@
-#include <iostream>
-#include <list>
-#include <algorithm>
-#include <string>
-
-
-
-
 /**
  * @name Deniz Mutlu.
  */
@@ -59,57 +51,64 @@ Test set 2 - Hidden
 -1000 ≤ si ≤ 1000
  */
 
+
+
+
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
+void solve_case(const int case_num) {
+    int N;
+    cin >> N;
+    
+    vector<int> books;
+    vector<int> evens;
+    vector<int> odds;
+    books.reserve(N);
+    evens.reserve(N); 
+    odds.reserve(N);  
+    for (int i = 0; i < N; ++i) {
+        int value;
+        cin >> value;
+        books.emplace_back(value);
+        
+        if (value % 2 == 0) {
+            evens.emplace_back(value);
+        } else {
+            odds.emplace_back(value);
+        }
+    }
+    
+    sort(evens.rbegin(), evens.rend()); 
+    sort(odds.begin(), odds.end());      
+    
+    cout << "Case #" << case_num << ":";
+    
+    size_t even_idx = 0;
+    size_t odd_idx = 0;
+    
+    for (const int& book : books) {
+        cout << ' ' << ((book % 2 == 0) ? evens[even_idx++] : odds[odd_idx++]);
+    }
+    cout << '\n';
+}
+
 int main() {
-    bool loop = true;
-    int arrLength;
-    while (loop) {
-        std::cout << "Enter the length of books" << std::endl;
-        std::cin >> arrLength;
-        if (arrLength < 0 || arrLength > 1000) {
-            arrLength = 0;
-        } else {
-            loop = false;
-        }
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr); 
+    
+    int T;
+    cin >> T;
+    
+    for (int i = 1; i <= T; ++i) {
+        solve_case(i);
     }
-
-    int books[arrLength];
-    std::cout << "Enter integers (one integer per line)" << std::endl;
-    for (int i = 0; i < arrLength; i++) {
-        cin >> books[i];
-    }
-
-    list<int> evens;
-    for (int &book: books) {
-        if (book % 2 == 0) {
-            evens.push_front(book);
-        }
-    }
-    list<int> odds;
-    for (int &book: books) {
-        if (book % 2 != 0) {
-            odds.push_back(book);
-        }
-    }
-
-    evens.sort();
-    evens.reverse();
-    odds.sort();
-    auto iteratorEven = evens.begin();
-    auto iteratorOdd = odds.begin();
-    for (int i = 0; i < arrLength; i++) {
-        if (books[i] % 2 == 0) {
-            books[i] = *iteratorEven;
-            iteratorEven++;
-        } else {
-            books[i] = *iteratorOdd;
-            iteratorOdd++;
-        }
-    }
-    std::destroy(evens.begin(), evens.end());
-    std::destroy(odds.begin(), odds.end());
-    for (int book: books) {
-        std::cout << book << " ";
-    }
+    
+    return 0;
 }
